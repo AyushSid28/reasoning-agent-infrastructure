@@ -15,15 +15,15 @@ logger = get_logger(__name__)
 def get_response_from_ai_agents(llm_id,query,allow_search,system_prompt):
     try:
         logger.info(f"Creating LLM with model: {llm_id}")
-    llm= ChatGroq(model=llm_id)  #this llm id is basically the type of model we are using to generate the response
+        llm= ChatGroq(model=llm_id)  #this llm id is basically the type of model we are using to generate the response
 
         logger.info(f"Setting up tools, allow_search: {allow_search}")
         tools=[TavilySearch(max_results=2)] if allow_search else []   #allow_search is a boolean value that tells us whether we want to use the search tool or not
 
         logger.info("Creating react agent...")
-    agent=create_react_agent(
-        model=llm,
-        tools=tools,
+        agent=create_react_agent(
+            model=llm,
+            tools=tools,
             prompt=system_prompt if system_prompt else None,
         )
 
@@ -33,19 +33,19 @@ def get_response_from_ai_agents(llm_id,query,allow_search,system_prompt):
         state={"messages": messages}
         
         logger.info("Invoking agent...")
-    response=agent.invoke(state)
+        response=agent.invoke(state)
         logger.info("Agent invocation completed")
         
-    messages=response.get("messages")
+        messages=response.get("messages")
         logger.info(f"Got {len(messages)} messages from response")
 
-    ai_messages=[message.content for message in messages if isinstance(message,AIMessage) ]
+        ai_messages=[message.content for message in messages if isinstance(message,AIMessage) ]
         logger.info(f"Found {len(ai_messages)} AI messages")
 
         if not ai_messages:
             raise CustomException("No AI response generated from agent", error_detail=None)
 
-    return ai_messages[-1]
+        return ai_messages[-1]
     
     except groq.BadRequestError as e:
         # Handle Groq API errors (like model decommissioned)

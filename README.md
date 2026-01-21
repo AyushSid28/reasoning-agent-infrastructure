@@ -6,7 +6,7 @@ A production-ready, full-stack AI agent platform that integrates multiple Large 
 
 The Multi-AI Agent System is an enterprise-grade application that provides a unified interface for interacting with multiple AI models through a sophisticated agent architecture. The system leverages LangGraph's ReAct agent pattern to create intelligent agents capable of reasoning, tool usage, and dynamic response generation. Users can define custom AI agents with specific roles and behaviors, select from multiple LLM providers, and enable real-time web search to enhance response accuracy and relevance.
 
-The platform follows a microservices architecture with clear separation between frontend presentation, backend API services, and core AI agent logic. It implements comprehensive error handling, logging, and process management to ensure reliability and observability in production environments.
+The platform follows a microservices architecture with clear separation between frontend presentation, b`ackend API services, and core AI agent logic. It implements comprehensive error handling, logging, and process management to ensure reliability and observability in production environments.
 
 ## Architecture
 
