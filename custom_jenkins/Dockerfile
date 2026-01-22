@@ -26,5 +26,11 @@ RUN groupadd -f docker && \
 RUN mkdir -p /var/lib/docker
 VOLUME /var/lib/docker
 
+# Install gosu for user switching in entrypoint
+RUN apt-get update && \
+    apt-get install -y gosu && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 # Switch back to the Jenkins user
 USER jenkins
