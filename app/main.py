@@ -26,7 +26,7 @@ def run_backend():
         env = os.environ.copy()
         env['PYTHONPATH'] = str(project_root) + (os.pathsep + env.get('PYTHONPATH', ''))
         backend_process = subprocess.Popen(
-            ["uvicorn","app.backend.api:app","--host","127.0.0.1","--port","9999"],
+            ["uvicorn","app.backend.api:app","--host","0.0.0.0","--port","9999"],
             env=env,
             cwd=str(project_root)
         )

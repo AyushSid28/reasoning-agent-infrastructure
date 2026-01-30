@@ -11,6 +11,11 @@ app=FastAPI(title="Multi AI Agent")
 
 logger=get_logger(__name__)
 
+@app.get("/health")
+def health_check():
+    """Health check endpoint for ECS"""
+    return {"status": "healthy", "service": "Multi AI Agent"}
+
 class RequestState(BaseModel):
     model_name:str
     system_prompt:str
