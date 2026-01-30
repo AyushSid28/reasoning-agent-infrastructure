@@ -34,3 +34,16 @@ RUN apt-get update && \
 
 # Switch back to the Jenkins user
 USER jenkins
+
+
+
+
+
+
+
+
+
+
+
+
+
